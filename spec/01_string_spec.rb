@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# # frozen_string_literal: true
 
 describe String do
   # Let creates a helper method with a memoized value that is cached for the
@@ -35,22 +35,45 @@ describe String do
   end
 end
 
-# ASSIGNMENT
+# # ASSIGNMENT
 
 describe String do
   # Create a let variable that will pass the first test.
-
-  # remove the 'x' before running this test
-  xit 'is equal to tacos' do
+  let(:favorite_food) {'tacos'}
+  it 'is equal to tacos' do
     expect(favorite_food).to eq('tacos')
   end
 
-  # remove the 'x' before running this test
   context 'when favorite food is updated' do
     # Change the favorite_food let variable.
+    let(:favorite_food) {'pizza'}
 
-    xit 'updates the favorite food' do
+    it 'updates the favorite food' do
       # Write a test that will pass.
+      expect(favorite_food).to eql('pizza')
+    end
+  end
+end
+
+describe String do
+  let(:favorite_color) { String.new('green') }
+
+  context 'when the let variable is given' do
+    it 'it gets the value from String class' do
+      expect(favorite_color).to eql('green')
+    end
+  end
+
+  context 'when the let variable is overwritten' do
+    let(:favorite_color) { String.new('blue') }
+    it 'it gets its value updated' do
+      expect(favorite_color).to eql('blue')
+    end
+  end
+
+  context 'when the variable is out of scope' do
+    it 'returns the original value' do
+      expect(favorite_color).to eql('green')
     end
   end
 end

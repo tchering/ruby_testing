@@ -30,7 +30,9 @@ describe Hash do
     end
 
     it 'has remote start' do
-      expect(car_features[:remote_start?]).to be true
+      # expect(car_features[:remote_start?]).to be_remote_start
+      # This above wont work bcoz its hash data not predicate method.
+      expect(car_features[:remote_start?]).to be(true)
     end
 
     it 'does not have assisted steering' do
@@ -48,22 +50,24 @@ describe Hash do
       model: 'Jetta',
       year: 2017,
       parking_camera?: true,
-      assisted_steering?: false
+      assisted_steering?: false,
+      color: %w[green blue red]
     }
   end
-
-  # remove the 'x' before running this test
-  xit 'is newer than 2015' do
-    # Write a test that verifies the above statement.
+  # Write a test that verifies the above statement(newer then 2015)
+  it 'returns newer then 2015' do
+    expect(my_car[:year]).to be > 2015
   end
-
-  # remove the 'x' before running this test
-  xit 'has a parking camera' do
-    # Write a test that verifies the above statement.
+  # Write a test that verifies the above statement.(has parking camera)
+  it 'returns has parking camera' do
+    expect(my_car[:parking_camera?]).to be(true)
   end
-
-  # remove the 'x' before running this test
-  xit 'does not have assisted steering' do
-    # Write a test that verifies the above statement.
+  #  # Write a test that verifies the above statement.(does not have assisted steering)
+  it 'returns does not have assisted steering' do
+    expect(my_car[:assisted_steering?]).to be(false)
+  end
+  # Write a test that verifies the above statement.(to include color green)
+  it 'includes color green in the car model' do
+    expect(my_car[:color]).to include('green')
   end
 end
