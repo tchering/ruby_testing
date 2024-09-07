@@ -56,6 +56,7 @@ describe 'lucky numbers with rotate! method' do
   context 'when rotating the array of lucky numbers' do
     # remove the 'x' before running this test
     xit 'will change the first value to 7' do
+      expect(lucky_numbers.sample).not_to eql()
     end
 
     # remove the 'x' before running this test

@@ -2,14 +2,20 @@
 
 # If you need to test a condition that does not have a built-in matcher,
 # you can create your own.
-# https://rspec.info/features/3-12/rspec-expectations/custom-matchers/
 
 describe 'defining custom matchers' do
   context 'when reusing a matcher that is in scope' do
+    # ------------Either this way----------------------------
     matcher :be_divisible_by_four do
       match { |num| (num % 4).zero? }
     end
-
+    # --------------Either this way--------------------------
+    # RSpec::Matchers.define :be_divisible_by_four do
+    #   match do |num|
+    #     num % 4 == 0
+    #   end
+    # end
+    # --------------------------------------------------------
     it 'is divisible by 4' do
       expect(12).to be_divisible_by_four
     end
@@ -35,30 +41,25 @@ describe 'one word palindrome test' do
   let(:palindrome) { 'palindrome' }
 
   # Write a custom matcher that detects a one word palindrome,
-  # using the following block: { |word| word.reverse == word }
-  # When it is set up correctly, all of the following tests will pass.
+  RSpec::Matchers.define :be_a_palindrome do
+    match do |string|
+      string.reverse == string
+    end
+  end
+  # ----------------------------------------------
+  matcher :be_a_palindrome do
+    match { |word| word.reverse == word }
+  end
 
   context 'when a palindrome is used' do
-    # remove the 'x' before running this test
-    xit 'is a palindrome' do
+    it 'is a palindrome' do
       expect(racecar).to be_a_palindrome
-    end
-
-    # remove the 'x' before running this test
-    xit 'is a palindrome' do
-      expect(rotator).to be_a_palindrome
     end
   end
 
   context 'when a palindrome is not used' do
-    # remove the 'x' before running this test
-    xit 'is not a palindrome' do
+    it 'is not a palindrome' do
       expect(spaceship).not_to be_a_palindrome
-    end
-
-    # remove the 'x' before running this test
-    xit 'is not a palindrome' do
-      expect(palindrome).not_to be_a_palindrome
     end
   end
 end

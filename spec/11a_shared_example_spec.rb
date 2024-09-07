@@ -9,15 +9,15 @@
 # 2. Review the tests in spec/11a_shared_example_spec.rb
 # 3. Complete either spec/11b_cat_spec.rb or spec/11c_dog_spec.rb
 
-# Start with reading about the use of shared examples:
-# https://rspec.info/features/3-12/rspec-core/example-groups/shared-examples/
+# Start with reading about the use of shared
+# https://rspec.info/features/3-12/rspec-core/examples:example-groups/shared-examples/
 
 # These tests are dependent on using the implicit 'subject' when they are
 # included in another spec file. This file is not intended to be used alone.
 # If you run rspec on this file, there will be 'no examples found' because
 # there is not an implicit subject available.
 
-RSpec.shared_examples 'base class method name' do
+RSpec.shared_examples 'base class method name' do # when calling include_examples in other this it should match exactly to this
   # This test can be used in Cat and Dog because the method comes from the
   # base class.
   # https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/respond-to/
