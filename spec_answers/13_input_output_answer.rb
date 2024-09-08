@@ -208,30 +208,5 @@ describe NumberGame do
         expect { game_one.final_message }.to output(lucky_phrase).to_stdout
       end
     end
-
-    # ASSIGNMENT #5
-
-    # Create a new instance of NumberGame, with specific values for @solution,
-    # @guess, and @count
-    context 'when count is 2-3' do
-      subject(:game_three) { described_class.new(5, '5', 3) }
-
-      it 'outputs correct phrase' do
-        congrats_phrase = "Congratulations! You picked the random number in 3 guesses!\n"
-        expect { game_three.final_message }.to output(congrats_phrase).to_stdout
-      end
-    end
-
-    # ASSIGNMENT #6
-
-    # Write a test for the following context.
-    context 'when count is 4 and over' do
-      subject(:game_seven) { described_class.new(5, '5', 7) }
-
-      it 'outputs correct phrase' do
-        hard_phrase = "That was hard. It took you 7 guesses!\n"
-        expect { game_seven.final_message }.to output(hard_phrase).to_stdout
-      end
-    end
   end
 end

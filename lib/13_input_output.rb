@@ -55,6 +55,12 @@ class NumberGame
     @count = count
   end
 
+  def initialize
+    @solution = rand(0..9)
+    @guess = guess
+    @count = 0
+  end
+
   def play_game
     puts "Let's play a game called 'Guess a random number!'"
     turn_order until game_over?
@@ -76,7 +82,7 @@ class NumberGame
   end
 
   def verify_input(number)
-    return number if number.match?(/^[0-9]$/)
+    number if number.match?(/^[0-9]$/)
   end
 
   def game_over?
@@ -101,8 +107,8 @@ class NumberGame
   end
 end
 
-# game = NumberGame.new
-# game.play_game
+game = NumberGame.new
+game.play_game
 
 # game = ImpossibleToTestGame.new
 # game.play_game

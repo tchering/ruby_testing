@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'rspec'
 require_relative '../lib/12_magic_seven'
 
 # The file order to complete this lesson:
@@ -31,7 +32,7 @@ require_relative '../lib/12_magic_seven'
 
 describe MagicSeven do
   # This next line should be very familiar, and it is part of the 'Arrange' step.
-  subject(:game) { described_class.new }
+  subject(:game) { described_class.new } # Arrange
 
   describe '#add_nine' do
     # This test could be written as below (and it would pass):
@@ -70,34 +71,40 @@ describe MagicSeven do
   # Write a test for each of the following methods:
 
   describe '#subtract_four' do
+    it 'returns 10 ' do
+      previous_step = 14 # Arrange
+      result = game.subtract_four(previous_step) # Act
+      expect(result).to eql(10)
+    end
   end
 
   describe '#divide_by_two' do
+    it 'returns 20' do
+      previous_step = 40
+      result = game.divide_by_two(previous_step)
+      expect(result).to eql(20)
+    end
   end
 
   # The following tests will need you to create new instances of MagicSeven with
   # a specific value for the random_number.
   describe '#subtract_random_number' do
+    subject(:game_three) {described_class.new(3)}
+    it 'returns 7' do
+      previous_step = 10
+      result = game_three.subtract_random_number(previous_step)
+      expect(result).to eql(7)
+    end
   end
 
   # The #play method will always return seven! Test this game, using any
   # integer as the random_number. Update the context with the number.
   describe '#play' do
     context 'when the random number is ...' do
-      # remove the 'x' before running this test
-      xit 'will return 7' do
-      end
-    end
-
-    context 'when the random number is ...' do
-      # remove the 'x' before running this test
-      xit 'will return 7' do
-      end
-    end
-
-    context 'when the random number is ...' do
-      # remove the 'x' before running this test
-      xit 'will return 7' do
+      subject(:game_nineteen) {described_class.new(20)}
+      it 'will return 7' do
+        result = game_nineteen.play
+        expect(result).to eql(7)
       end
     end
   end

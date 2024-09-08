@@ -93,7 +93,7 @@ describe NumberGame do
 
   describe '#verify_input' do
     subject(:game_check) { described_class.new }
-    # Note: #verify_input will only return a value if it matches /^[0-9]$/
+    # NOTE: #verify_input will only return a value if it matches /^[0-9]$/
 
     context 'when given a valid input as argument' do
       it 'returns valid input' do
@@ -168,9 +168,13 @@ describe NumberGame do
     # Write a test for the following context.
     context 'when user inputs two incorrect values, then a valid input' do
       before do
+        letter = 'D'
+        symbol = '$'
+        correct_input = 2
       end
 
-      xit 'completes loop and displays error message twice' do
+      it 'completes loop and displays error message twice' do
+        allow(game_loop).to_receive(:player_input).and_return(letter, symbol, correct_input)
       end
     end
   end
